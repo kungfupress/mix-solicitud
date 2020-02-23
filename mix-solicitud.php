@@ -14,6 +14,7 @@
 defined( 'ABSPATH' ) || die();
 
 // Constantes que afectan a todos los ficheros del plugin.
+define( 'MIX_SOL_PLUGIN_FILE', __FILE__ );
 define( 'MIX_SOL_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MIX_SOL_URL', plugin_dir_url( __FILE__ ) );
 define( 'MIX_SOL_VERSION', '0.1.0' );

@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || die();
 
 
 // Cuando el plugin se active se crea la tabla del mismo si no existe.
-register_activation_hook( __FILE__, 'mix_solicitud_init' );
+register_activation_hook( MIX_SOL_PLUGIN_FILE, 'mix_solicitud_init' );
 
 /**
  * Realiza las acciones necesarias para configurar el plugin cuando se activa
