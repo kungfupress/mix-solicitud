@@ -3,7 +3,7 @@ jQuery( document ).ready( function($) {
 	$("#ci").keyup(function(){
 		$("#ci").validate_ci(); // adds 'valid' or 'invalid' classes to the input on keyup
 	});
-	$("#form_aspirante").on("submit", function(e) {
+	$("#form_solicitud").on("submit", function(e) {
 		e.preventDefault();
 		var $ci = $("#ci");
 		if ($ci.hasClass("valid")) {

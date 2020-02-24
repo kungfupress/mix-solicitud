@@ -1,6 +1,6 @@
 <?php
 /**
- * File: mix-solicitud/include/tax-departamento.php
+ * File: mix-solicitud/include/crea-tax-departamento.php
  *
  * @package mix_sol
  */

@@ -14,6 +14,10 @@ add_shortcode( 'mix_form_solicitud', 'mix_form_solicitud' );
  * @return string
  */
 function mix_form_solicitud() {
+	// Carga hoja de estilo.
+	wp_enqueue_style( 'css_aspirante', MIX_SOL_URL . 'assets/style.css', null, MIX_SOL_VERSION );
+	// Carga el script que valida el documento identidad.
+	wp_enqueue_script( 'js_cedula', MIX_SOL_URL . 'assets/cedula-uruguay.js', array( 'jquery' ), MIX_SOL_VERSION, true );
 	// Trae los departamentos existentes a una variable.
 	// Esta variable recibirá un array de objetos de tipo taxonomy.
 	$departamentos = get_terms(
@@ -24,14 +28,15 @@ function mix_form_solicitud() {
 		)
 	);
 	ob_start();
-	if ( filter_input( INPUT_GET, 'mix-resultado', FILTER_SANITIZE_STRING ) === 'success' ) {
+	if ( filter_input( INPUT_GET, 'mix-solicitud-resultado', FILTER_SANITIZE_STRING ) === 'success' ) {
 		echo '<h4>Se ha grabado su solicitud correctamente</h4>';
 	}
-	if ( filter_input( INPUT_GET, 'mix-resultado', FILTER_SANITIZE_STRING ) === 'error' ) {
+	if ( filter_input( INPUT_GET, 'mix-solicitud-resultado', FILTER_SANITIZE_STRING ) === 'error' ) {
 		echo '<h4>Se ha producido un error al grabar su solicitud</h4>';
 	}
 	?>
-	<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
+	<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post"
+		id="form_solicitud">
 		<?php wp_nonce_field( 'mix-solicitud', 'mix-solicitud-nonce' ); ?>
 		<input type="hidden" name="action" value="mix-solicitud">
 		<div class="form-input">
@@ -40,7 +45,7 @@ function mix_form_solicitud() {
 		</div>
 		<div class="form-input">
 			<label for="documento">Documento de identidad</label>
-			<input name="documento" id="celular" type="text" required="required">
+			<input name="documento" id="ci" type="text" required="required" placeholder="0.000.000-0">
 		</div>
 		<div class="form-input">
 			<label for="celular">Celular</label>
