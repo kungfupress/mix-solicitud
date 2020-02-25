@@ -34,9 +34,8 @@ function mix_solicitud_menu() {
 function mix_solicitud_admin() {
 	global $wpdb;
 	$tabla_solicitud = $wpdb->prefix . 'solicitud';
-	$solicitudes     = $wpdb->get_results( "SELECT * FROM $tabla_solicitud", OBJECT);
+	$solicitudes     = $wpdb->get_results( "SELECT * FROM $tabla_solicitud", OBJECT );
 	echo '<div class="wrap"><h1>Lista de solicitudes</h1>';
-
 	echo '<div class="dashicons-before dashicons-admin-page"><a href="' . admin_url( 'admin.php?page=mix_solicitud_menu' );
 	echo '&accion=descarga_csv&_wpnonce=';
 	echo wp_create_nonce( 'descarga_csv' ) . '">Descargar fichero CSV</a></div><br>';
