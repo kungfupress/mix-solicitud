@@ -27,7 +27,7 @@ function genera_csv() {
 		die( 'Security check error' );
 	}
 	ob_start();
-	$filename = 'mix-solicitudes-' . date('Ymd') . '.csv';
+	$filename = 'mix-solicitudes-' . date('YmdHi') . '.csv';
 
 	$fila_titulos = array(
 		'Nombre',
