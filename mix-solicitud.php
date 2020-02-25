@@ -19,8 +19,9 @@ define( 'MIX_SOL_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MIX_SOL_URL', plugin_dir_url( __FILE__ ) );
 define( 'MIX_SOL_VERSION', '0.1.0' );
 
-// Crea tabla y taxonomía.
+// Crea tabla.
 require_once MIX_SOL_DIR . 'include/crea-tabla-solicitud.php';
+// Crea y rellena taxonomía.
 require_once MIX_SOL_DIR . 'include/crea-tax-departamento.php';
 // Agrega shortcode [mix_form_solicitud] con formulario para crear talleres.
 require_once MIX_SOL_DIR . 'include/form-shortcode.php';
@@ -28,3 +29,5 @@ require_once MIX_SOL_DIR . 'include/form-shortcode.php';
 require_once MIX_SOL_DIR . 'include/form-solicitud-grabar.php';
 // Panel con lista de solicitudes en el escritorio.
 require_once MIX_SOL_DIR . 'include/panel-admin.php';
+// Código para descargar las solicitudes recibidas.
+require_once MIX_SOL_DIR . 'include/descarga-solicitudes.php';
