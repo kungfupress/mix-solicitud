@@ -45,7 +45,7 @@ function mix_form_solicitud() {
 		</div>
 		<div class="form-input">
 			<label for="documento">Documento de identidad</label>
-			<input name="documento" id="ci" type="text" required="required" placeholder="0.000.000-0">
+			<input name="documento" id="ci" type="number" required="required" placeholder="0.000.000-0" min="111111" max="99999999">
 		</div>
 		<div class="form-input">
 			<label for="celular">Celular</label>

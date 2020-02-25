@@ -26,3 +26,5 @@ require_once MIX_SOL_DIR . 'include/crea-tax-departamento.php';
 require_once MIX_SOL_DIR . 'include/form-shortcode.php';
 // Agrega función para que admin-post.php capture el envío de un nuevo taller desde un formulario.
 require_once MIX_SOL_DIR . 'include/form-solicitud-grabar.php';
+// Panel con lista de solicitudes en el escritorio.
+require_once MIX_SOL_DIR . 'include/panel-admin.php';
