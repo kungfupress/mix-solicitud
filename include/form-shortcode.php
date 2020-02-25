@@ -53,11 +53,11 @@ function mix_form_solicitud() {
 		</div>
 		<div class="form-input">
 			<label for="telefono">Teléfono</label>
-			<input name="telefono" id="telefono" type="number">
+			<input name="telefono" id="telefono" type="number" required="required">
 		</div>
 		<div class="form-input">
 			<label for="correo">Correo</label>
-			<input name="correo" id="correo" type="email">
+			<input name="correo" id="correo" type="email" required="required">
 		</div>
 		<div class="form-input">
 			<label for="id_departamento">Departamentos</label>

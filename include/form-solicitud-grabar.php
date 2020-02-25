@@ -31,6 +31,8 @@ function mix_graba_solicitud() {
 	if ( isset( $_POST['nombre'] )
 	&& isset( $_POST['documento'] )
 	&& isset( $_POST['celular'] )
+	&& isset( $_POST['telefono'] )
+	&& isset( $_POST['correo'] )
 	&& isset( $_POST['id_departamento'] )
 	&& isset( $_POST['ciudad'] )
 	&& isset( $_POST['monto'] )
@@ -40,12 +42,12 @@ function mix_graba_solicitud() {
 		$nombre          = sanitize_text_field( wp_unslash( $_POST['nombre'] ) );
 		$documento       = sanitize_text_field( wp_unslash( $_POST['documento'] ) );
 		$celular         = sanitize_text_field( wp_unslash( $_POST['celular'] ) );
+		$telefono = sanitize_text_field( wp_unslash( $_POST['telefono'] ) );
+		$correo = sanitize_text_field( wp_unslash( $_POST['correo'] ) );
 		$id_departamento = (int) $_POST['id_departamento'];
 		$ciudad          = sanitize_text_field( wp_unslash( $_POST['ciudad'] ) );
 		$monto           = (float) $_POST['monto'];
 		$created_at = date('Y-m-d H:i:s');
-		$telefono = isset( $_POST['telefono'] )?sanitize_text_field( wp_unslash( $_POST['telefono'] ) ):null;
-		$correo = isset( $_POST['correo'] )?sanitize_text_field( wp_unslash( $_POST['correo'] ) ):null;
 		$tabla_solicitud = $wpdb->prefix . 'solicitud';
 		$resultado = $wpdb->insert(
 			$tabla_solicitud,
@@ -53,11 +55,11 @@ function mix_graba_solicitud() {
 				'nombre' => $nombre,
 				'documento' => $documento,
 				'celular' => $celular,
+				'telefono' => $telefono,
+				'correo' => $correo,
 				'departamento_id' => $id_departamento,
 				'ciudad' => $ciudad,
 				'monto' => $monto,
-				'telefono' => $telefono,
-				'correo' => $correo,
 				'created_at' => $created_at,
 			)
 		);
