@@ -35,15 +35,16 @@ function mix_solicitud_admin() {
 	global $wpdb;
 	$tabla_solicitud = $wpdb->prefix . 'solicitud';
 	$solicitudes     = $wpdb->get_results( "SELECT * FROM $tabla_solicitud", OBJECT );
-	echo '<div class="wrap"><h1>Lista de solicitudes</h1>';
-	echo '<div class="dashicons-before dashicons-admin-page"><a href="' . admin_url( 'admin.php?page=mix_solicitud_menu' );
-	echo '&accion=descarga_csv&_wpnonce=';
-	echo wp_create_nonce( 'descarga_csv' ) . '">Descargar fichero CSV</a></div><br>';
-	echo '<table class="wp-list-table widefat fixed striped">';
-	echo '<thead><tr><th>Nombre</th><th>Documento</th><th>Celular</th>';
-	echo '<th>Teléfono</th><th>Correo</th><th>Departamento</th><th>Ciudad / Localidad / Barrio</th><th>Monto</th>';
-	echo '<td></td></tr></thead>';
-	echo '<tbody id="the-list">';
+
+	$html  = '<div class="wrap"><h1>Lista de solicitudes</h1>';
+	$html .= '<div class="dashicons-before dashicons-admin-page"><a href="' . admin_url( 'admin.php?page=mix_solicitud_menu' );
+	$html .= '&accion=descarga_csv&_wpnonce=';
+	$html .= wp_create_nonce( 'descarga_csv' ) . '">Descargar fichero CSV</a></div><br>';
+	$html .= '<table class="wp-list-table widefat fixed striped">';
+	$html .= '<thead><tr><th>Nombre</th><th>Documento</th><th>Celular</th>';
+	$html .= '<th>Teléfono</th><th>Correo</th><th>Departamento</th><th>Ciudad / Localidad / Barrio</th><th>Monto</th>';
+	$html .= '<td></td></tr></thead>';
+	$html .= '<tbody id="the-list">';
 	foreach ( $solicitudes as $solicitud ) {
 		$nombre           = esc_textarea( $solicitud->nombre );
 		$documento        = esc_textarea( $solicitud->documento );
@@ -54,15 +55,16 @@ function mix_solicitud_admin() {
 		$departamento     = $tax_departamento->name;
 		$ciudad           = esc_textarea( $solicitud->ciudad );
 		$monto            = (int) $solicitud->monto;
-		echo "<tr><td>$nombre</td><td>$documento</td><td>$celular</td>";
-		echo "<td>$telefono</td><td>$correo</td><td>$departamento</td>";
-		echo "<td>$ciudad</td><td>$monto</td>";
-		echo "<td><a href='#' data-solicitud_id='$solicitud->id' class='sol-borrar'>Borrar</a></td></tr>";
+		$html .= "<tr><td>$nombre</td><td>$documento</td><td>$celular</td>";
+		$html .= "<td>$telefono</td><td>$correo</td><td>$departamento</td>";
+		$html .= "<td>$ciudad</td><td>$monto</td>";
+		$html .= "<td><a href='#' data-solicitud_id='$solicitud->id' class='sol-borrar'>Borrar</a></td></tr>";
 	}
-	echo '</tbody></table></div>';
-	echo '<br><div class="dashicons-before dashicons-admin-page"><a href="' . admin_url( 'admin.php?page=mix_solicitud_menu' );
-	echo '&accion=descarga_csv&_wpnonce=';
-	echo wp_create_nonce( 'descarga_csv' ) . '">Descargar fichero CSV</a></div>';
+	$html .= '</tbody></table></div>';
+	$html .= '<br><div class="dashicons-before dashicons-admin-page"><a href="' . admin_url( 'admin.php?page=mix_solicitud_menu' );
+	$html .= '&accion=descarga_csv&_wpnonce=';
+	$html .= wp_create_nonce( 'descarga_csv' ) . '">Descargar fichero CSV</a></div>';
+	echo $html;
 }
 
 add_action( 'admin_enqueue_scripts', 'mix_solicitud_admin_scripts' );
